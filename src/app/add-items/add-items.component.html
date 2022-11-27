@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <h1 class="d-flex justify-content-center p-2">Angular Project Blog</h1>
+        <div class=" d-flex justify-content-end">
+            <button class="btn btn-primary w-25" (click)="createRoute()">
+                <!-- <a routerLink="/blog/create" routerLinkActive="active" class="text-white"> -->
+                    <span class="btn-label">&#x2b;</span>Create
+                <!-- </a> -->
+            </button>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let blog of blogs; index as i">
+                    <!-- <img [src]="https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg" class="me-2" style="width: 20px"> -->
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td><img width="150" src="http://localhost:3000/{{blog?.thumbnail }}"></td>
+                    <td>{{ blog?.title }}</td>
+                    <td>{{ blog?.author }}</td>
+                    <td>{{ blog?.description }}</td>
+                    <td>
+                        <span class="cursor-pointer" ><a [routerLink]="['blog',blog._id]" routerLinkActive="active" class="text-primary">&#9998;</a></span>
+                        <span class="cursor-pointer text-danger" (click)="deleteBlog(blog._id)" style="font-size: x-large;"> &times;</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div class="card">
+                    alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title text-secondary">{{blog.title}}</h3>
+                    <h5 class="text-primary">{{blog.author}}</h5>
+                    <p class="card-text">{{blog.description}}</p>
+                    <div class="d-flex w-100 justify-content-between">
+                        <button class="btn btn-info text-white">Edit</button>
+                        <button class="btn btn-info text-white">Delete</button>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+</div>

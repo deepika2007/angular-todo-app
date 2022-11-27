@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-10 mx-auto">
+            <h1 class="m-4 p-2"> Blog Create form </h1>
+            <form [formGroup]="createBlog" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" formControlName="title" class="form-control" id="exampleInputTitle" required
+                        aria-describedby="" placeholder="Title">
+                    <div *ngIf="createBlog.controls['title'].invalid && createBlog.controls['title'].errors"
+                        class="alert alert-danger mt-3">
+                        <div *ngIf="createBlog.controls['title']?.errors">
+                            Title is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="textarea" row="5" formControlName="description" class="form-control" required
+                        id="exampleInputDescription" placeholder="Description">
+                    <div *ngIf="createBlog.controls['description'].invalid && createBlog.controls['description'].errors"
+                        class="alert alert-danger mt-3">
+                        <div *ngIf="createBlog.controls['description']?.errors">
+                            Description is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" formControlName="author" id="exampleInputAuthor" required
+                        aria-describedby="" placeholder="Author">
+                    <div *ngIf="createBlog.controls['author'].invalid && createBlog.controls['author'].errors"
+                        class="alert alert-danger mt-3">
+                        <div *ngIf="createBlog.controls['author']?.errors">
+                            Author is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="file" name="thumbnail" (change)="onFileSelect($event)" />
+                </div>
+                <div class="d-flex w-100 justify-content-evenly mt-3">
+                    <a routerLink="/" routerLinkActive="active" class="">Cancel</a>
+                    <button type="submit" [disabled]="createBlog.status=='INVALID'" class="btn btn-primary text-white">{{isEditId?'Update':'Create'}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
